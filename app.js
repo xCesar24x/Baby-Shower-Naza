@@ -388,7 +388,82 @@ function startApp() {
     });
 
     /* ==========================================================================
-       7. INITIALIZATION & PARALLAX EFFECT
+       7. DYNAMIC BUTTERFLY SWARM GENERATOR
+       ========================================================================== */
+    function createDynamicButterflies() {
+        const container = document.querySelector('.background-decorations');
+        if (!container) return;
+
+        const butterflyCount = 14; // Dynamic butterfly count
+
+        for (let i = 0; i < butterflyCount; i++) {
+            // Outer wrapper for mouse parallax
+            const outerWrapper = document.createElement('div');
+            outerWrapper.className = 'dynamic-butterfly-outer';
+
+            // Random initial placement properties
+            const size = Math.random() * 32 + 18; // 18px to 50px
+            const initialX = Math.random() * 92 + 4; // 4% to 96%
+            const initialY = Math.random() * 90 + 5; // 5% to 95%
+            const opacity = Math.random() * 0.28 + 0.12; // 0.12 to 0.40 depth opacity
+            
+            // Set styles
+            outerWrapper.style.position = 'absolute';
+            outerWrapper.style.left = `${initialX}%`;
+            outerWrapper.style.top = `${initialY}%`;
+            outerWrapper.style.width = `${size}px`;
+            outerWrapper.style.height = `${size}px`;
+            outerWrapper.style.opacity = opacity;
+            outerWrapper.style.pointerEvents = 'none';
+            // some fly in front of the card, some behind (depth of field!)
+            outerWrapper.style.zIndex = Math.random() > 0.75 ? '15' : '2'; 
+
+            // Middle wrapper for slow GSAP loop flight path
+            const middleWrapper = document.createElement('div');
+            middleWrapper.className = 'dynamic-butterfly-middle';
+            middleWrapper.style.width = '100%';
+            middleWrapper.style.height = '100%';
+
+            // Inner image
+            const img = document.createElement('img');
+            img.src = 'Imagenes/Real-Pink-Butterfly-Transparent-Image.png';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+            img.style.filter = 'drop-shadow(0 4px 10px rgba(224, 148, 168, 0.25))';
+            img.style.transformOrigin = 'center';
+
+            // Flutter wing flapping animation (fast CSS keyframe)
+            const flutterDuration = Math.random() * 0.35 + 0.5; // 0.5s to 0.85s
+            const flutterDelay = Math.random() * 2;
+            img.style.animation = `flutter ${flutterDuration}s ease-in-out infinite alternate ${flutterDelay}s`;
+
+            middleWrapper.appendChild(img);
+            outerWrapper.appendChild(middleWrapper);
+            container.appendChild(outerWrapper);
+
+            // Animate travel path smoothly using GSAP loops
+            const travelX = (Math.random() - 0.5) * 140; // up to 70px left/right
+            const travelY = (Math.random() - 0.5) * 140; // up to 70px up/down
+            const rotation = (Math.random() - 0.5) * 60; // rotate slightly
+            const flightDuration = Math.random() * 14 + 10; // 10s to 24s
+            const flightDelay = Math.random() * 3;
+
+            gsap.to(middleWrapper, {
+                x: travelX,
+                y: travelY,
+                rotation: rotation,
+                duration: flightDuration,
+                delay: flightDelay,
+                ease: 'sine.inOut',
+                repeat: -1,
+                yoyo: true
+            });
+        }
+    }
+
+    /* ==========================================================================
+       8. INITIALIZATION & PARALLAX EFFECT
        ========================================================================== */
     // Subtle Mouse Move Parallax for Background Decorations
     document.addEventListener('mousemove', (e) => {
@@ -412,8 +487,21 @@ function startApp() {
             ease: 'power2.out',
             overwrite: 'auto'
         });
+
+        // Animate dynamic butterflies with custom speed based on depth (opacity proxy)
+        document.querySelectorAll('.dynamic-butterfly-outer').forEach(butterfly => {
+            const zDepth = parseFloat(butterfly.style.opacity) * 90; // Depth factor
+            gsap.to(butterfly, {
+                x: mouseX * -zDepth * 0.35,
+                y: mouseY * -zDepth * 0.35,
+                duration: 2,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+        });
     });
 
+    createDynamicButterflies();
     initWelcomeAnimations();
 
 }
