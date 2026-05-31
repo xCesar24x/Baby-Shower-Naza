@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acompáñanos a celebrar la dulce espera de Nazareth en su Tarde de Café. Confirma tu asistencia a esta mágica y dulce tarde.">
+    <title>¡Tarde de Café de Nazareth! 🦋☕🌸</title>
+    
+    <!-- Google Fonts & Google Material Symbols (Rounded & Outlined) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Music Player (Floating) -->
+    <div class="music-player-container" id="musicPlayer">
+        <button class="music-toggle-btn" id="musicToggle" aria-label="Reproducir música de fondo" title="Música de fondo">
+            <span class="material-symbols-rounded note-icon">music_note</span>
+            <div class="music-waves">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <audio id="bgAudio" loop autoplay>
+            <source src="music.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <!-- Background Elements (Floating butterflies, flowers, hearts, coffee cups) -->
+    <div class="background-decorations">
+        <!-- Floating Butterflies from provided assets -->
+        <img src="Imagenes/Real-Pink-Butterfly-Transparent-Image.png" class="bg-butterfly bf-1" alt="Mariposa flotante">
+        <img src="Imagenes/Real-Pink-Butterfly-Transparent-Image.png" class="bg-butterfly bf-2" alt="Mariposa flotante">
+        <img src="Imagenes/Real-Pink-Butterfly-Transparent-Image.png" class="bg-butterfly bf-3" alt="Mariposa flotante">
+        
+        <!-- Recreated Floating Background Icons (Hearts, Coffee Cups, Baby care, Sparkles, Flowers) -->
+        <div class="floating-icon fi-butterfly-main"><span class="material-symbols-rounded">flutter_dash</span></div>
+        <div class="floating-icon fi-coffee-cup"><span class="material-symbols-rounded">coffee</span></div>
+        <div class="floating-icon fi-bottle"><span class="material-symbols-rounded">child_care</span></div>
+        <div class="floating-icon fi-flower-1"><span class="material-symbols-rounded">local_florist</span></div>
+        <div class="floating-icon fi-pacifier"><span class="material-symbols-rounded">baby_changing_station</span></div>
+        <div class="floating-icon fi-heart"><span class="material-symbols-rounded">favorite</span></div>
+        <div class="floating-icon fi-star-1"><span class="material-symbols-rounded">star</span></div>
+        <div class="floating-icon fi-star-2"><span class="material-symbols-rounded">star</span></div>
+        
+        <!-- Rose Gold Sparkles -->
+        <div class="sparkle sp-1">✦</div>
+        <div class="sparkle sp-2">✦</div>
+        <div class="sparkle sp-3">✦</div>
+        <div class="sparkle sp-4">✦</div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-wrapper">
+        <div class="glass-container" id="glassContainer">
+            
+            <!-- STEP 1: LA INVITACIÓN MÁGICA -->
+            <section id="step-1" class="step-section active">
+                <div class="card-header">
+                    <!-- Main Butterfly Image from user's assets folder -->
+                    <div class="hero-image-wrapper">
+                        <img src="Imagenes/mariposaprincipal.jpeg" alt="Tarde de Café de Nazareth">
+                    </div>
+                    <div class="event-title-badge">¡Tarde de Café! ☕🦋</div>
+                </div>
+
+                <div class="card-body text-center">
+                    <h1 class="font-title main-heading">El Baby Shower de <br><span class="name-highlight">Nazareth</span></h1>
+                    <p class="font-body lead-text">
+                        Estoy por llegar y mis papitos Shahnon y David y yo queremos invitarles a una linda tarde de café, para celebrar mi dulce espera.
+                    </p>
+                    
+                    <div class="love-message-box">
+                        <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                        <p class="font-body quote-text">
+                            "Hay tesoros que no se buscan, se esperan con el alma llena de amor... Shahnon y David están preparando el nido para recibir a su amada Nazareth, y queremos festejar su pronta llegada rodeados de toda la felicidad del mundo."
+                        </p>
+                        <i class="fa-solid fa-quote-right quote-icon-right"></i>
+                    </div>
+
+                    <button class="primary-btn ripple" id="btnGoToForm">
+                        <span>Acompañar en la Tarde de Café 🌸</span>
+                        <i class="fa-solid fa-circle-chevron-right btn-icon"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- STEP 2: DETALLES Y CONFIRMACIÓN -->
+            <section id="step-2" class="step-section">
+                <div class="card-header">
+                    <div class="hero-image-wrapper">
+                        <!-- Watercolor flowers/butterflies from user assets -->
+                        <img src="Imagenes/Real-Pink-Butterfly-Transparent-Image.png" alt="Detalles del Evento" style="padding: 15px; object-fit: contain;">
+                    </div>
+                    <div class="event-title-badge font-title">Detalles del Evento</div>
+                </div>
+
+                <div class="card-body">
+                    <!-- Event Details Panel (Cards) -->
+                    <div class="details-grid">
+                        <div class="detail-card card-day interactive-card">
+                            <div class="detail-icon-wrapper">
+                                <i class="fa-regular fa-calendar-check detail-icon"></i>
+                            </div>
+                            <div class="detail-info">
+                                <h3 class="font-title">Día y Hora</h3>
+                                <p class="detail-main text-rose">04 de julio</p>
+                                <span class="detail-sub text-gold">2:00 PM | ¡Acompáñanos! ☕</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-card card-location interactive-card">
+                            <div class="detail-icon-wrapper">
+                                <i class="fa-solid fa-map-location-dot detail-icon"></i>
+                            </div>
+                            <div class="detail-info">
+                                <h3 class="font-title">Lugar</h3>
+                                <p class="detail-main text-rose">Salón del Centro</p>
+                                <span class="detail-sub text-gold">Diurno de Póas 📍</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RSVP FORM CONTAINER -->
+                    <div class="rsvp-form-container">
+                        <h2 class="font-title form-heading text-center">Confirmar Asistencia</h2>
+                        <p class="form-sub-heading text-center font-body">Por favor confirma tu asistencia antes del día 20 de junio.</p>
+                        
+                        <form id="rsvpForm" class="rsvp-form" autocomplete="off">
+                            <!-- Guest Name Input -->
+                            <div class="input-group">
+                                <label for="guestName" class="font-title input-label">Tu Nombre Completo <span class="required">*</span></label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-signature field-icon"></i>
+                                    <input type="text" id="guestName" placeholder="Ej: Sofía Rodríguez" class="font-body text-input" required>
+                                    <span class="focus-border"></span>
+                                </div>
+                            </div>
+
+                            <!-- Attendance Choice (Interactive Buttons) -->
+                            <div class="input-group">
+                                <label class="font-title input-label">¿Podrás asistir? <span class="required">*</span></label>
+                                <div class="attendance-options">
+                                    <button type="button" class="attendance-btn active" id="btnAttending" data-value="si">
+                                        <div class="btn-check-indicator"><i class="fa-solid fa-check"></i></div>
+                                        <span class="btn-emoji">🦋</span>
+                                        <span class="btn-text font-title">¡Sí, con amor!</span>
+                                    </button>
+                                    <button type="button" class="attendance-btn" id="btnNotAttending" data-value="no">
+                                        <div class="btn-check-indicator"><i class="fa-solid fa-check"></i></div>
+                                        <span class="btn-emoji">✨</span>
+                                        <span class="btn-text font-title">No podré asistir</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Conditional Fields (Only if Attending) -->
+                            <div id="conditionalFields" class="conditional-fields show">
+                                <!-- Adult Companions -->
+                                <div class="input-group">
+                                    <label for="adultCount" class="font-title input-label">Cantidad de Adultos <span class="required">*</span></label>
+                                    <div class="custom-select-wrapper">
+                                        <i class="fa-solid fa-user-group field-icon"></i>
+                                        <select id="adultCount" class="font-body custom-select">
+                                            <option value="1">1 Adulto (Solo yo)</option>
+                                            <option value="2">2 Adultos</option>
+                                            <option value="3">3 Adultos</option>
+                                            <option value="4">4 Adultos</option>
+                                            <option value="5+">5+ Adultos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Children Companions -->
+                                <div class="input-group">
+                                    <label for="childCount" class="font-title input-label">Cantidad de Niños</label>
+                                    <div class="custom-select-wrapper">
+                                        <i class="fa-solid fa-baby field-icon"></i>
+                                        <select id="childCount" class="font-body custom-select">
+                                            <option value="0">Ningún niño</option>
+                                            <option value="1">1 Niño</option>
+                                            <option value="2">2 Niños</option>
+                                            <option value="3">3 Niños</option>
+                                            <option value="4+">4+ Niños</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blessings / Message Textarea -->
+                            <div class="input-group">
+                                <label for="guestMessage" class="font-title input-label">Mensaje para Shahnon, David y Nazareth</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-heart field-icon textarea-icon"></i>
+                                    <textarea id="guestMessage" rows="3" placeholder="Déjales unas hermosas palabras de bendición..." class="font-body text-textarea"></textarea>
+                                    <span class="focus-border"></span>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="form-actions-grid">
+                                <button type="button" class="secondary-btn font-title ripple" id="btnBackToWelcome">
+                                    <i class="fa-solid fa-circle-chevron-left btn-icon-left"></i>
+                                    <span>Atrás</span>
+                                </button>
+                                <button type="submit" class="primary-btn font-title ripple" id="btnSubmitRSVP">
+                                    <span>Confirmar 📱</span>
+                                    <i class="fa-brands fa-whatsapp btn-icon"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 3: AGRADECIMIENTO MÁGICO -->
+            <section id="step-3" class="step-section">
+                <div class="card-header">
+                    <div class="hero-image-wrapper">
+                        <!-- Watercolor flower background with butterfly -->
+                        <img src="Imagenes/ilustracion-mariposas-acuarela_23-2151411746.avif" alt="¡Muchas gracias!" style="padding: 10px; object-fit: contain;">
+                    </div>
+                    <div class="event-title-badge text-gold">¡Espacio Reservado! 🌸✨</div>
+                </div>
+
+                <div class="card-body text-center">
+                    <h1 class="font-title thanks-heading">¡Muchas Gracias, <br><span class="guest-name-thank" id="thankYouName">Invitado</span>!</h1>
+                    <p class="font-body lead-text thanks-desc" id="thankYouMessage">
+                        Tu amor y buenos deseos ya están abrigando el corazón de Shahnon y David, y preparando una dulce bienvenida para la pequeña Nazareth.
+                    </p>
+
+                    <!-- Summary Box of RSVP -->
+                    <div class="rsvp-summary-box interactive-card font-body">
+                        <div class="summary-title font-title"><i class="fa-solid fa-clipboard-list text-green"></i> Resumen de Confirmación</div>
+                        <div class="summary-line" id="summaryStatusRow">
+                            <span class="summary-label">Estado:</span>
+                            <span class="summary-value text-green font-title" id="summaryStatus">Confirmado 🌸</span>
+                        </div>
+                        <div class="summary-line" id="summaryCompanionsRow">
+                            <span class="summary-label">Acompañantes:</span>
+                            <span class="summary-value" id="summaryCompanions">1 Adulto</span>
+                        </div>
+                        <div class="summary-details-note font-title">
+                            <i class="fa-solid fa-circle-info"></i> La cita es el 04 de julio a las 2:00 PM en el Salón del Centro Diurno de Póas. ¡Te esperamos!
+                        </div>
+                    </div>
+
+                    <p class="font-body thanks-whatsapp-remind">
+                        Si por algún motivo no pudiste enviar tu mensaje de confirmación, puedes presionar el botón de abajo para enviarlo directamente a Shahnon y David por WhatsApp.
+                    </p>
+
+                    <!-- Primary WhatsApp Send again -->
+                    <button class="primary-btn whatsapp-resend-btn ripple" id="btnResendWhatsApp">
+                        <span>Enviar por WhatsApp 📱</span>
+                        <i class="fa-brands fa-whatsapp btn-icon"></i>
+                    </button>
+
+                    <!-- Reset button (Start again) -->
+                    <button class="text-btn font-title" id="btnRestart">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Modificar mis datos o ver invitación</span>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Footer decoration with copyright or lovely text -->
+    <footer class="event-footer font-body">
+        <p>Con amor para Nazareth, Shahnon & David 🌸 2026</p>
+    </footer>
+
+    <!-- GSAP Animation Library CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Custom Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
