@@ -26,20 +26,14 @@ function startApp() {
     
     const btnAttending = document.getElementById('btnAttending');
     const btnNotAttending = document.getElementById('btnNotAttending');
-    const conditionalFields = document.getElementById('conditionalFields');
-    
     const rsvpForm = document.getElementById('rsvpForm');
     const guestNameInput = document.getElementById('guestName');
-    const adultCountSelect = document.getElementById('adultCount');
-    const childCountSelect = document.getElementById('childCount');
     const guestMessageTextarea = document.getElementById('guestMessage');
 
     // Thank You Display Elements
     const thankYouName = document.getElementById('thankYouName');
     const thankYouMessage = document.getElementById('thankYouMessage');
     const summaryStatus = document.getElementById('summaryStatus');
-    const summaryCompanions = document.getElementById('summaryCompanions');
-    const summaryCompanionsRow = document.getElementById('summaryCompanionsRow');
 
     // Saved formatted WhatsApp URL to allow resending
     let formattedWhatsAppUrl = '';
@@ -197,16 +191,6 @@ function startApp() {
         selectedAttendance = 'si';
         btnAttending.classList.add('active');
         btnNotAttending.classList.remove('active');
-        
-        // Show conditional fields with GSAP
-        conditionalFields.classList.add('show');
-        gsap.to(conditionalFields, {
-            maxHeight: 250,
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power3.out'
-        });
     });
 
     // Not Attending Button Click
@@ -214,18 +198,6 @@ function startApp() {
         selectedAttendance = 'no';
         btnNotAttending.classList.add('active');
         btnAttending.classList.remove('active');
-
-        // Hide conditional fields with GSAP
-        gsap.to(conditionalFields, {
-            maxHeight: 0,
-            opacity: 0,
-            y: -10,
-            duration: 0.4,
-            ease: 'power2.in',
-            onComplete: () => {
-                conditionalFields.classList.remove('show');
-            }
-        });
     });
 
     /* ==========================================================================
@@ -293,8 +265,6 @@ function startApp() {
             return false;
         }
 
-        const adults = adultCountSelect.value;
-        const children = childCountSelect.value;
         const message = guestMessageTextarea.value.trim();
 
         // Build WhatsApp Custom Message with Rich Styling
@@ -305,12 +275,6 @@ function startApp() {
             messageText += `*Detalles de Confirmación:*\n`;
             messageText += `👤 *Invitado:* ${guestName}\n`;
             messageText += `✅ *Asistencia:* ¡Sí, con amor estaré ahí! ☕🌸\n`;
-            messageText += `👥 *Acompañantes Adultos:* ${adults}\n`;
-            if (parseInt(children) > 0) {
-                messageText += `👶 *Acompañantes Niños:* ${children}\n`;
-            } else {
-                messageText += `👶 *Niños:* Ninguno\n`;
-            }
         } else {
             messageText += `Quería comentarles que no podré asistir a la Tarde de Café de *Nazareth*, pero les envío a ustedes y a la bebé todo mi amor y mejores deseos ✨🤍\n\n`;
             messageText += `*Detalles:*\n`;
@@ -335,18 +299,10 @@ function startApp() {
             thankYouMessage.innerHTML = `Tu amor y buenos deseos ya están abrigando el corazón de Shahnon y David, y preparando una dulce bienvenida para la pequeña <strong>Nazareth</strong>. ¡Nos vemos en esta hermosa tarde de café!`;
             summaryStatus.textContent = '¡Confirmado con Amor! 🌸☕';
             summaryStatus.className = 'summary-value text-green font-title';
-            summaryCompanionsRow.style.display = 'flex';
-            
-            let companionSummary = `${adults} Adulto${adults !== '1' ? 's' : ''}`;
-            if (parseInt(children) > 0) {
-                companionSummary += ` y ${children} Niño${children !== '1' ? 's' : ''}`;
-            }
-            summaryCompanions.textContent = companionSummary;
         } else {
             thankYouMessage.innerHTML = `Gracias por enviar tus hermosas palabras de cariño. Aunque no puedas asistir físicamente, tu amor ya abriga a Shahnon y David, y a la pequeña <strong>Nazareth</strong> en esta dulce espera. ✨`;
             summaryStatus.textContent = 'No podré asistir, pero envío amor ✨';
             summaryStatus.className = 'summary-value text-gold font-title';
-            summaryCompanionsRow.style.display = 'none';
         }
 
         // 1. Trigger Confetti celebration if attending
@@ -379,8 +335,6 @@ function startApp() {
         selectedAttendance = 'si';
         btnAttending.classList.add('active');
         btnNotAttending.classList.remove('active');
-        conditionalFields.classList.add('show');
-        gsap.set(conditionalFields, { maxHeight: '', opacity: '', y: '' });
 
         transitionToStep(step3, step1, () => {
             initWelcomeAnimations();
